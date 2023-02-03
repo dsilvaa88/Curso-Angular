@@ -1,0 +1,36 @@
+ng n nombreproyecto CREA UN PROYECTO
+ng serve -o CORRE EL PROYECTO ó ng s -o
+ng n m nombre CREA UN MODULO
+ng g c nombre CREA UN COMPONENTE
+ng g c -s -t CREA UN COMPONENTE CON LOS STYLES Y LOS TEMPLATES IN LINE, ES DECIR SE DEFINEN AHI MISMO
+npm install bootstrap --save INSTALAR BOOTSTRAP, DESPUES IR A ANGULAR.JSON Y AÑADIR EN STYLES: "node_modules/bootstrap/dist/css/bootstrap.min.css"
+DESPUES EN SCRIPT AÑADIR "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+
+PROPERTY BINDING (UNION): [] PARA PODER MODIFICAR LAS PROPIEDADES DE LA PAGINA WEB DE FORMA DINAMICA (MIENTRAS SE EJECUTA) 
+EVENT BINDING: () UNION DE EVENTOS
+BINDING BIDIRECCIONAL: [()] El flujo de informacion va del ts al html, birideccionalmente hablando
+
+
+DIRECTIVAS: sirven para modificar la estructura del DOM (document object model), modificar la apariencia
+tres tipos: tipo componente (angular y customs), tipo estructura (modifican la estructura en el HTML al momento de inspeccionar en internet), tipo atributo
+EJEMPLOS: atributo: ngClass, ng Model
+	Estructural: ngIf, ngFor, ngSwitch
+	Componente: agregar decorador
+
+
+*ngIf: es como tener un if (expresion==true){...
+solo que se ocupa así : *ngIf="expresion"{...
+
+HTML:
+
+class="btn btn-primary" darle una clase al boton (CON BOOSTRAP)
+m-2 para separar dos botones
+p padding para agrandar la caja de un boton
+
+CUANDO SE AGREGA UN FORM EN HTML HAY QUE AÑADIRLO EN EL MODULE.TS, EN LOS IMPORTS FormsModule
+
+Formas de alinear al centro:
+style="text-align: center;"
+align="center"
+

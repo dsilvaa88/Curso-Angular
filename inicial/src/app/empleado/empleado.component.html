@@ -1,0 +1,17 @@
+<p>Nombre: {{getNombre()}}</p>
+<p>Apellido: {{apellido}}</p>
+<p>Edad: {{edad>=18 ? edad : "Menor de edad"}}</p>
+
+
+<!-- <p>Ingrese la empresa del empleado: <input type="text" #empresa [disabled]="habilitacionCuad"><input type="button" value="Ingresar" (click)="llamaEmpresa(empresa.value)"/></p> -->
+<!-- ESTO ES USANDO EL KEYUP <p>Ingrese la empresa del empleado: <input type="text" #empresa (keyup)="0"></p> -->
+Ingrese la empresa del empleado: <input type="text" [(ngModel)]="empresa">
+<p>Empresa del empleado: {{empresa}}</p>  
+<br/>
+
+{{textoRegistro}} <br/>
+
+Registrado: <input type="radio" value="si" name="nRegistro" id="registro" [checked]="usuRegistrado" (click)="setUsuarioRegistrado($event)"> 
+No registrado: <input type="radio" valu="no" name="nRegistro" (click)="setUsuarioRegistrado($event)">
+
+{{getRegistroUsuario()}}

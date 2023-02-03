@@ -1,0 +1,43 @@
+<h1 align="center">{{title}} desarrollada en un entorno Angular</h1>
+<br/><br/>
+<div class="container">
+  <form >
+    Numero 1: <input type="number" [(ngModel)]="n1" name="n1"><br/><br/>
+    Numero 2: <input type="number" [(ngModel)]="n2" name="n2"><br/><br/>
+
+    <button type="button" (click)="sumar()" class="btn btn-primary m-1 ">Sumar</button>
+    <button type="button" (click)="restar()" class="btn btn-primary m-1">Restar</button>
+    <button type="button" (click)="multiplicar()" class="btn btn-primary m-1">Multiplicar</button>
+    <button type="button" (click)="dividir()" class="btn btn-primary m-1">Dividir</button>
+    <p>Resultado: {{resultado}}</p>
+  </form>
+</div>
+<br/>
+
+<h1 style="text-align: center;">{{tituloLog}}</h1><br/>
+<div class="container">
+  <form>
+    Usuario <input type="text" name="Usuario" [(ngModel)]="usu"><br/>
+    Clave <input type="text" name="Clave" [(ngModel)]="pass"><br/>
+    <button type="button" class="btn btn-primary m-2" (click)="registrarUsu()">Registrar</button>
+  </form>
+
+  <br/>
+  <p *ngIf="registrado; else sinRegistrar">{{usu}}, {{mensaje}}</p>
+
+  <ng-template #sinRegistrar>
+    <p>Nadie se ha registrado</p>
+  </ng-template>
+  <br/><br/>
+
+  <ul>
+    <li *ngFor="let entrada of entradas; let i=index">
+      <span style="font-size: larger; font-weight: bold;">
+        {{entrada.titulo}}
+      </span>
+      Entrada {{i}}
+    </li>
+  </ul>
+
+  
+</div>
