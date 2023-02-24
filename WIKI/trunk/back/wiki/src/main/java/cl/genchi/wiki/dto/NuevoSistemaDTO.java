@@ -1,0 +1,58 @@
+package cl.genchi.wiki.dto;
+
+import java.io.Serializable;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+public class NuevoSistemaDTO implements Serializable{
+	
+//serializable, para que se 
+	
+	@NotNull(message = "no puede ser nulo, ingrese uno.")
+	@NotBlank(message = "no puede ser vacío, ingrese uno.")
+	private String nombre;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")
+	private String descripcion;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")				
+	private String version;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")
+	private String tecnologia;
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public String getTecnologia() {
+		return tecnologia;
+	}
+	public void setTecnologia(String tecnologia) {
+		this.tecnologia = tecnologia;
+	}
+	
+	 
+	private static final long serialVersionUID = 1L;
+
+}

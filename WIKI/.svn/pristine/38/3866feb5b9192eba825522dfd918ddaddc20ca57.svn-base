@@ -1,0 +1,13 @@
+package cl.genchi.wiki.dao;
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import cl.genchi.wiki.entity.Sistema;
+
+public interface ISistemasDao extends JpaRepository<Sistema, UUID> {//centralizar la responsabilidad al acceso de la DB
+	
+	
+	
+	
+}

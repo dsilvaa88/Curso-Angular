@@ -17,13 +17,15 @@
 <h1 style="text-align: center;">{{tituloLog}}</h1><br/>
 <div class="container">
   <form>
-    Usuario <input type="text" name="Usuario" [(ngModel)]="usu"><br/>
-    Clave <input type="text" name="Clave" [(ngModel)]="pass"><br/>
+    Usuario <input type="text" name="usuario" [(ngModel)]="usu"><br/>
+    Clave <input type="text" name="clave" [(ngModel)]="pass"><br/>
+    Cargo <input type="text" name="cargo" [(ngModel)]="cargo"><br/>
     <button type="button" class="btn btn-primary m-2" (click)="registrarUsu()">Registrar</button>
   </form>
 
   <br/>
-  <p *ngIf="registrado; else sinRegistrar">{{usu}}, {{mensaje}}</p>
+  <!-- ALTERNATIVA A NGCLASS <span [ngStyle]="{color: cargo=='director' ? 'red' : 'blue'}"> {{cargo}}</span> -->
+  <p *ngIf="registrado; else sinRegistrar">{{usu}}, {{mensaje}} <span [ngClass]="{directores : cargo=='director'}"> {{cargo}}</span></p>//se aplica un operador ternario
 
   <ng-template #sinRegistrar>
     <p>Nadie se ha registrado</p>

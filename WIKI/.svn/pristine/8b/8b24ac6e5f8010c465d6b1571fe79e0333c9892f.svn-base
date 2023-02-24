@@ -1,0 +1,43 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
+import { WikiRoutingModule } from './wiki-routing.module';
+import { Pagina1Component } from './pages/pagina1/pagina1.component';
+import { Pagina2Component } from './pages/pagina2/pagina2.component';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { AppLayoutModule } from '../layout/app.layout.module';
+import { FormsModule } from '@angular/forms';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+
+
+
+
+@NgModule({
+  declarations: [
+    Pagina1Component,
+    Pagina2Component,
+    PrincipalComponent,
+    TopbarComponent,
+    SidebarComponent,
+    MenuComponent,
+   
+    FooterComponent,
+
+  
+  ],
+  imports: [
+    CommonModule,
+    WikiRoutingModule,
+    PrimeNgModule,
+    AppLayoutModule,
+    FormsModule,
+
+  ]
+})
+export class WikiModule { }

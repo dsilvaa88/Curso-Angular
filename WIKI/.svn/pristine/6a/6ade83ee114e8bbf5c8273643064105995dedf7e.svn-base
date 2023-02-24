@@ -1,0 +1,14 @@
+<h2 style="text-align:center;">
+    <u>¿En qué consiste esta Wiki?</u>
+</h2>
+<br/>
+<div class="col flex align-items-center justify-content-center">
+    <h5>
+        <p align="center">
+            Es un espacio creado para el área de soporte de Gendarmería de Chile, que tiene como propósito informar el estado de los sistemas en desarrollo.
+        </p>
+        <p align="center">
+            A su vez, ir informando del estatus actual de estos, las tecnologías usadas, la fecha de creación y la fecha de modificación en caso de haber sido actualizado este.
+        </p>
+    </h5>
+</div>

@@ -1,11 +1,18 @@
 ng n nombreproyecto CREA UN PROYECTO
 ng serve -o CORRE EL PROYECTO ó ng s -o
 ng n m nombre CREA UN MODULO
-ng g c nombre CREA UN COMPONENTE
+ng g c nombre CREA UN COMPONENTE, PARA CREARLO SIN EL HTML ng generate component dado --inline-template, PARA QUITAR EL SPEC --skip-tests, PARA QUITAR EL CSS --inline-style
 ng g c -s -t CREA UN COMPONENTE CON LOS STYLES Y LOS TEMPLATES IN LINE, ES DECIR SE DEFINEN AHI MISMO
-npm install bootstrap --save INSTALAR BOOTSTRAP, DESPUES IR A ANGULAR.JSON Y AÑADIR EN STYLES: "node_modules/bootstrap/dist/css/bootstrap.min.css"
-DESPUES EN SCRIPT AÑADIR "node_modules/bootstrap/dist/js/bootstrap.min.js"
 
+
+INSTALAR BOOTSTRAP, JQUERY Y POPPER.JS
+npm i bootstrap jquery popper.js --save
+DESPUES IR A ANGULAR.JSON Y AÑADIR EN STYLES: "node_modules/bootstrap/dist/css/bootstrap.min.css"
+DESPUES EN SCRIPT AÑADIR [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
+            ]
 
 PROPERTY BINDING (UNION): [] PARA PODER MODIFICAR LAS PROPIEDADES DE LA PAGINA WEB DE FORMA DINAMICA (MIENTRAS SE EJECUTA) 
 EVENT BINDING: () UNION DE EVENTOS
@@ -25,8 +32,12 @@ solo que se ocupa así : *ngIf="expresion"{...
 HTML:
 
 class="btn btn-primary" darle una clase al boton (CON BOOSTRAP)
+style="margin-top: 20px" AÑADIR MARGEN DE ARRIBA A UN BOTON, PARA QUE NO QUEDE TAN PEGADO
 m-2 para separar dos botones
 p padding para agrandar la caja de un boton
+CUANDO SE BUSCA TENER UN TEXTO CSS Y SIN FORMATO ALGUNO, OCUPAR <span>
+
+
 
 CUANDO SE AGREGA UN FORM EN HTML HAY QUE AÑADIRLO EN EL MODULE.TS, EN LOS IMPORTS FormsModule
 
@@ -34,3 +45,25 @@ Formas de alinear al centro:
 style="text-align: center;"
 align="center"
 
+operador ternario 
+(condicion ? IF : ELSE)
+
+
+CSS
+.directores{ //LO QUE SE BUSCA MODIFICAR, EN ESTE CASO SE INVENTA DIRECTORES PERO PUEDE SER UN H1
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+ngClass a diferencia de ngStyle nos permite utilizar una hoja de estilos externa donde se puede explayar en la modificacion
+EJ
+
+<span [ngStyle]="{color: cargo=='director' ? 'red' : 'blue'}"> {{cargo}}</span> SE PUEDE PONER UN ELSE
+
+<span [ngClass]="{directores : cargo=='director'}"> SE PUEDE USAR UN CSS QUE ES DIRECTORES
+
+@Input () PASA INFO DE PADRE A HIJO
+@Output () PASA INFO DE HIJO A PADRE
+
+PARA QUITAR EL MODO  ESTRICTO AL INICIALIZAR, SE TIENE QUE AÑADIR EN COMPILEROPTIONS "strictPropertyInitialization": false,

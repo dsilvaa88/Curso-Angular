@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+
+  // { 
+  //   path: 'mimodulo',
+  //   loadChildren: () => import('./mi-modulo/mi-modulo.module').then(m => m.MiModuloModule)
+  // },
+  // {path:"**", redirectTo:"mimodulo"}
+
+    {
+      path:'wiki',
+      loadChildren: () => import('./wiki/wiki.module').then(m => m.WikiModule),
+      
+    },
+    { path: "**" , redirectTo:"wiki" }
+
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {
+
+  
+ }

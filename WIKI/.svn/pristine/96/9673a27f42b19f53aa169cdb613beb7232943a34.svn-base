@@ -1,0 +1,13 @@
+package cl.genchi.wiki.service;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import cl.genchi.wiki.entity.Sistema;
+
+public interface ISistemaService {
+	public ResponseEntity<List<Sistema>>traerSistemas();
+		
+	
+}

@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AppLayoutModule } from '../layout/app.layout.module';
+import { FormsModule } from '@angular/forms';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { WikiRoutingModule } from './wiki-routing.module';
+
+import { Pagina1Component } from './pages/pagina1/pagina1.component';
+import { Pagina2Component } from './pages/pagina2/pagina2.component';
+import { SistemaComponent } from './pages/sistema/sistema.component';
+
+
+
+@NgModule({
+  declarations: [
+    Pagina1Component,
+    Pagina2Component,
+    SistemaComponent,
+  
+  ],
+  imports: [
+    AppLayoutModule,
+    CommonModule,
+    FormsModule,
+    PrimeNgModule,
+    WikiRoutingModule,
+
+  ],
+  
+})
+export class WikiModule { }

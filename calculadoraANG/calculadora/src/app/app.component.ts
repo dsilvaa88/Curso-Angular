@@ -27,12 +27,13 @@ export class AppComponent {
 
   registrarUsu(){
     this.registrado=true;
-    this.mensaje="se ha registrado con éxito"
+    this.mensaje="se ha registrado con éxito y su cargo es: "
   }
   mensaje="";
   registrado=false;
   usu:string="";
   pass:string="";
+  cargo:string="";
 
   entradas: any;
 

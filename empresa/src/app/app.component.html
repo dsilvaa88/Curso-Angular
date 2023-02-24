@@ -1,0 +1,55 @@
+<h1>{{title}}</h1><br/>
+<div class="container">
+  <form class="form-group row">
+    <div class="form-group col-md-3">
+      <label for="nombre">Nombre: </label>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" [(ngModel)]="cuadroNombre">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="apellido">Apellido: </label>
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido" class="form-control" [(ngModel)]="cuadroApellido">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="cargo">Cargo: </label>
+      <input type="text" name="cargo" id="cargo" placeholder="Cargo" class="form-control" [(ngModel)]="cuadroCargo">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="salario">Salario: </label>
+      <input type="text" name="salario" id="salario" placeholder="Salario" class="form-control" [(ngModel)]="cuadroSalario">
+    </div>
+
+    <div class="col">
+      <button type="submit" class="btn btn-primary" style="margin-top: 20px" (click)="agregarEmpleado()">Agregar</button>
+    </div>
+  </form>
+</div><br/><br/>
+
+
+<h1> {{title2}}</h1><br/>
+<div class="container">
+  <div class="row">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cargo</th>
+          <th>Salario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of arrayEmpleados; index as i">
+          <td>{{i+1}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{item.apellido}}</td>
+          <td>{{item.cargo}}</td>
+          <td>{{item.salario}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- SE LES DA UN NOMBRE IDENTIFICATIVO A LOS DATOS QUE SE QUIEREN PASAR AL HIJO  -->
+
+<app-empleado-hijo-component *ngFor="let item of arrayEmpleados; index as i" [empleadoDeLista]="item" [indice]="i"></app-empleado-hijo-component>

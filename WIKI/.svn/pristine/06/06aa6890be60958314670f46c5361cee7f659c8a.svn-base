@@ -1,0 +1,28 @@
+package cl.genchi.wiki.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import cl.genchi.wiki.dao.ISistemasDao;
+import cl.genchi.wiki.entity.Sistema;
+
+
+//TODO hacer un findbyid
+@Service//para que sea un servicio
+public class SistemaService implements ISistemaService {
+	
+	@Autowired
+	ISistemasDao sistemaDAO;
+	
+	@Override
+	public ResponseEntity<List<Sistema>> traerSistemas() {
+	List<Sistema> sistemas= sistemaDAO.findAll();
+		return new ResponseEntity<List<Sistema>>(sistemas, HttpStatus.OK);
+	}
+	
+	
+}
