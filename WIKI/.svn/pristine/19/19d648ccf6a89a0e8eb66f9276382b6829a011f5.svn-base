@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SistemasCRUDComponent } from './pages/sistemas-crud/sistemas-crud.component';
+import { UsuariosCRUDComponent } from './pages/usuarios-crud/usuarios-crud.component';
+import { VistaComponent } from './pages/vista/vista.component';
+
+const routes: Routes = [
+
+  {
+    path: '',
+    component: VistaComponent,
+
+    children:[
+      {
+        path: 'sistema_crud', component: SistemasCRUDComponent,
+      },
+      {
+        path: 'usuario_crud', component: UsuariosCRUDComponent,
+      },
+      {
+        path: '**', redirectTo: "sistema_crud",
+      },
+    ]
+  }
+];
+
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AdminRoutingModule { }

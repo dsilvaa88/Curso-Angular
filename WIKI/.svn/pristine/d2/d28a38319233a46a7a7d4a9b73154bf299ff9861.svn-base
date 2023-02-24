@@ -1,0 +1,30 @@
+package cl.genchi.wiki.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Historial")
+public class Historial {
+	@Id
+	private String id;
+	
+	private String historial;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getHistorial() {
+		return historial;
+	}
+
+	public void setHistorial(String historial) {
+		this.historial = historial;
+	}
+}

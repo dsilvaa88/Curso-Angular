@@ -1,0 +1,33 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiAuthService {
+
+  private baseUrl :string = environment.baseUrl;
+
+  constructor(private http:HttpClient) { }
+
+  private headers = new HttpHeaders()
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .set('Authorization', 'Basic Y2xpZW50ZXJlc3Q6MTIzNA==');
+
+
+  login(username:string, password:string){
+
+
+    const body={
+      username,
+      password,
+      grant_type:"password"
+    }
+
+    return this.http.post(`${this.baseUrl}/oauth/token`,body,
+    { headers: this.headers }
+    );
+
+  }
+}

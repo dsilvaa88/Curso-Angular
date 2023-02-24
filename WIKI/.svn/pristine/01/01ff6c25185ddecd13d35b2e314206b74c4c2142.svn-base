@@ -1,0 +1,15 @@
+<div class="despegado">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <img src="assets/layout/images/logoGenchi.png" height="40" class="mr-2">
+        </ng-template>
+        <ng-template pTemplate="end">
+                <p-button label="Logout" icon="pi pi-fw pi-power-off" (onClick)="volver()"></p-button>
+        </ng-template>
+
+    </p-menubar>
+    <p>NAV</p>
+
+
+    <router-outlet></router-outlet>
+</div>

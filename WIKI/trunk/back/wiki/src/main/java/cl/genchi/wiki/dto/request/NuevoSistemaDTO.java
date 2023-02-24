@@ -1,0 +1,69 @@
+package cl.genchi.wiki.dto.request;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+public class NuevoSistemaDTO implements Serializable{
+	
+//serializable, para que se 
+	
+	@NotNull(message = "no puede ser nulo, ingrese uno.")
+	@NotBlank(message = "no puede ser vacío, ingrese uno.")
+	private String nombre;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")
+	private String descripcion;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")				
+	private String version;
+	
+	@NotNull(message = "no puede ser nula, ingrese una.")
+	@NotBlank(message = "no puede ser vacía, ingrese una.")
+	private String tecnologia;
+	
+	private List<String> cambios;
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public String getTecnologia() {
+		return tecnologia;
+	}
+	public void setTecnologia(String tecnologia) {
+		this.tecnologia = tecnologia;
+	}
+	
+	 
+	public List<String> getCambios() {
+		return cambios;
+	}
+	public void setCambios(List<String> cambios) {
+		this.cambios = cambios;
+	}
+
+
+	private static final long serialVersionUID = 1L;
+
+}

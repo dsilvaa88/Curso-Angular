@@ -1,0 +1,139 @@
+package cl.genchi.wiki.service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+
+import cl.genchi.wiki.dao.ISistemasDao;
+import cl.genchi.wiki.dto.NuevoSistemaDTO;
+import cl.genchi.wiki.dto.TituloSistemaDTO;
+import cl.genchi.wiki.entity.Sistema;
+
+
+//TODO hacer un findbyid
+@Service//para que sea un servicio
+public class SistemaService implements ISistemaService {
+	
+	@Autowired
+	ISistemasDao sistemaDAO;
+	
+	@Override
+	public ResponseEntity<List<Sistema>> traerSistemas() {
+	List<Sistema> sistemas= (List<Sistema>) sistemaDAO.findAll();
+		return new ResponseEntity<List<Sistema>>(sistemas, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> guardarSistema(NuevoSistemaDTO sistemaDTO, BindingResult result) {
+		if (result.hasErrors()) {
+			System.out.println("Con errores");
+			return this.handleErrorsRequest(result);
+		}
+		System.out.println("Sin errores");
+		Map<String, Object> response = new HashMap<>();
+		Sistema sistema = new Sistema();
+		
+		UUID uuid = UUID.randomUUID();
+		sistema.setId(uuid.toString());
+		sistema.setFechaCreacion(new Date());
+		sistema.setFechaModificacion(new Date());
+		sistema.setNombre(sistemaDTO.getNombre());
+		sistema.setDescripcion(sistemaDTO.getDescripcion());
+		sistema.setTecnologia(sistemaDTO.getTecnologia());
+		sistema.setVersion(sistemaDTO.getVersion());
+		sistemaDAO.save(sistema);
+		response.put("status", true);
+		response.put("sistemaGuardado", sistema);
+		
+		
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	
+	}
+
+	@Override
+	public ResponseEntity<?> borrarSistema(String id) {
+		
+		Optional<Sistema> o = sistemaDAO.findById(id);
+		if (o.isPresent()){
+			sistemaDAO.delete(o.get());
+			return ResponseEntity.noContent().build();
+			}
+		return ResponseEntity.notFound().build();
+		}
+
+	@Override
+	public ResponseEntity<?> modificarSistema(NuevoSistemaDTO sistemaDTO, String id, BindingResult result) {
+		if (result.hasErrors()) {
+			return this.handleErrorsRequest(result);
+		}
+		
+		Optional<Sistema> o = sistemaDAO.findById(id);
+		if (o.isPresent()){
+			Sistema sis = o.get();
+			sis.setNombre(sistemaDTO.getNombre());
+			sis.setDescripcion(sistemaDTO.getDescripcion());
+			sis.setTecnologia(sistemaDTO.getTecnologia());
+			sis.setVersion(sistemaDTO.getVersion());
+			sis.setFechaModificacion(new Date());	
+			sistemaDAO.save(sis);
+			return ResponseEntity.ok(sis);
+			}
+		return ResponseEntity.notFound().build();
+		}
+
+	@Override
+	public ResponseEntity<Sistema> encontrar( String id) {
+		Optional<Sistema> o = sistemaDAO.findById(id);
+		if (o.isPresent()){
+			Sistema sis = o.get();
+			return ResponseEntity.ok(sis);
+			}
+		return ResponseEntity.notFound().build();
+		}
+		
+	private ResponseEntity<?> handleErrorsRequest(BindingResult result) {		//para ver si el DTO tiene errores																										
+
+		Map<String, Object> response = new HashMap<>();
+
+		List<String> errors = result.getFieldErrors().stream()
+				.map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
+				.collect(Collectors.toList());
+
+		response.put("errores", errors);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+	}
+
+	@Override
+	public ResponseEntity<List<TituloSistemaDTO>> traerTitulosSistemas() {
+		
+		List<Sistema> sistemas = (List<Sistema>) sistemaDAO.findAllOrdernado();
+		List<TituloSistemaDTO> listTituloSistemaDTO = new ArrayList<>();
+		TituloSistemaDTO tituloSistemaDTO = null;
+	
+		for (int i = 0; i < sistemas.size(); i++) {
+			tituloSistemaDTO = new TituloSistemaDTO();
+			tituloSistemaDTO.setId(sistemas.get(i).getId());
+			tituloSistemaDTO.setNombre(sistemas.get(i).getNombre());
+			listTituloSistemaDTO.add(tituloSistemaDTO);	
+		}
+		
+		
+		return new ResponseEntity<List<TituloSistemaDTO>>(listTituloSistemaDTO, HttpStatus.OK);
+	}
+	
+
+	
+	
+}
+

@@ -1,0 +1,6 @@
+Insert into SISTEMAS (ID,DESCRIPCION,FECHA_CREACION,FECHA_MODIFICACION,NOMBRE,TECNOLOGIA,VERSION) values ('174710f3-6f89-4e80-86fc-659d847331a7','Este sistema consta de ....',to_date('08/02/23','DD/MM/RR'),to_date('08/02/23','DD/MM/RR'),'Sistema 3','JS','1.0');
+Insert into SISTEMAS (ID,DESCRIPCION,FECHA_CREACION,FECHA_MODIFICACION,NOMBRE,TECNOLOGIA,VERSION) values ('ef373098-21c5-46bf-9d0d-51cc26886436','Este sistema consta de ....',to_date('07/02/23','DD/MM/RR'),to_date('07/02/23','DD/MM/RR'),'Sistema 2','C++','1.0');
+Insert into SISTEMAS (ID,DESCRIPCION,FECHA_CREACION,FECHA_MODIFICACION,NOMBRE,TECNOLOGIA,VERSION) values ('c30392f1-ece4-40a0-a36c-b67b71a7bf60','Este sistema consta de ....',to_date('07/02/23','DD/MM/RR'),to_date('07/02/23','DD/MM/RR'),'Sistema 1','python','1.0');
+Insert into ROLES (ID,NOMBRE) values (1,'ROLE_ADMIN');
+Insert into USUARIOS (ID, APELLIDO, EMAIL, ENABLED, NOMBRE, PASSWORD, USERNAME) values (1,'SILVA','asd@gmail.com', 1, 'DIEGO', '$2a$10$TEqclzgJY2SRwsCtV6CyAONtiVpDNaPHScDEwM6uO51yP41m4GYF6', 'GENCHI');
+Insert into USUARIOS_ROLES (USUARIO_ID, ROLE_ID) values (1,1);

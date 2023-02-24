@@ -1,0 +1,34 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { Pagina1Component } from './pages/pagina1/pagina1.component';
+import { Pagina2Component } from './pages/pagina2/pagina2.component';
+import { AppLayoutComponent } from '../layout/app.layout.component';
+import { SistemaComponent } from './pages/sistema/sistema.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AppLayoutComponent,
+
+    children:[
+      {
+        path: 'sistema/:id', component: SistemaComponent,
+      },
+      {
+        path: 'pagina1', component: Pagina1Component,
+      },
+      {
+        path: 'pagina2', component: Pagina2Component,
+      },
+
+      
+    ]
+
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class WikiRoutingModule { }

@@ -1,0 +1,26 @@
+package cl.genchi.wiki.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import cl.genchi.wiki.entity.Sistema;
+import cl.genchi.wiki.service.ISistemaService;
+
+
+@RestController
+@RequestMapping("/api")
+public class SistemaController {
+	
+	@Autowired
+	ISistemaService sistemaService;
+	
+	@GetMapping("/traerSistemas")
+	public ResponseEntity<List<Sistema>> traerSistemas(){
+		return sistemaService.traerSistemas();
+	}
+}	

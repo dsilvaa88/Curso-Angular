@@ -1,0 +1,23 @@
+traerDatos
+<pre>
+    {{datosSistema | json}}  
+</pre>
+
+<div class="card">
+    <h4>{{datosSistema.nombre}}</h4>
+    <p-accordion>
+        <p-accordionTab header="Descripción" [selected]="true" class="line-height-3 m-1">
+            {{datosSistema.descripcion}}
+        </p-accordionTab>
+        <p-accordionTab header="Cambios" class="line-height-3 m-1">
+            Acá va el historial de cambios
+        </p-accordionTab>
+    </p-accordion>
+    <h4>Fecha de Creación</h4>
+    {{datosSistema.fechaCreacion}}
+    <h4>Versión del Sistema</h4>
+    {{datosSistema.version}}
+    <br/>
+    <h4>Tecnología(s) Usada(s)</h4>
+    {{datosSistema.tecnologia}}
+</div> 
